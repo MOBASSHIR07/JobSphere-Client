@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaLaptopCode, FaTruck, FaChartLine, FaHeadset, FaUserMd, FaGraduationCap, FaUniversity, FaTools } from 'react-icons/fa';
+import { memo } from 'react';
+import { FaLaptopCode, FaTruck, FaChartLine, FaHeadset, FaUserMd, FaGraduationCap, FaUniversity, FaTools,FaArrowRight } from 'react-icons/fa';
 import { motion } from "framer-motion";
 
 const iconMap = {
@@ -13,44 +14,58 @@ const iconMap = {
     "Construction": <FaTools className="text-white text-xl" />
 };
 
-const CategoriesCard = ({ category }) => {
+const CategoriesCard = memo(({category}) => {
     const { title, jobCount, photo } = category;
     const icon = iconMap[title] || <FaLaptopCode className="text-white text-xl" />;
 
     return (
         <motion.div
-            className=" w-72  rounded-xl transition-all duration-300 "
+            className=" w-72  rounded-xl transition-all duration-300 will-change-transform will-change-opacity "
             whileHover="hover"
             initial="rest"
         >
             {/* Image Section with Gradient Overlay */}
             <motion.div
+             
                 className="relative h-60 "
                 variants={{
                     rest: { x: 0 },
-                    hover: { x: -20 }
+                    hover: { x: -20 },
+                    transition: { duration: 0.1, ease: "easeInOut" }
                 }}
             >
                 <img
                     src={photo || "https://via.placeholder.com/288x240"}
                     alt={title}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                 />
                 {/* Gradient Overlay (visible on hover) */}
                 <motion.div
+                
                     className="absolute inset-0 bg-gradient-to-t from-yellow-600/80 to-transparent"
                     variants={{
                         rest: { opacity: 0 },
-                        hover: { opacity: 1 }
+                        hover: { opacity: 1 },
+                          transition: { duration: 0.1, ease: "easeInOut" }
                     }}
-                    transition={{
-                        duration: 0.5,
-                        ease: "easeInOut"
-                    }}
+                    // transition={{
+                    //     duration: 0.5,
+                    //     ease: "easeInOut"
+                    // }}
                 />
                 {/* <div className="absolute -bottom-10 -left-30 bg-green-600 w-12 h-12 flex justify-center items-center rounded-tr-xl z-10">
                     {icon}
                 </div> */}
+
+                  <motion.div
+                 
+                 className="absolute  left-[40%] top-[40%]  text-green-500 text-5xl flex justify-center items-center rounded-tr-xl z-10"
+                  variants={{rest: { opacity: 0 }, hover: { opacity: 1 }}}
+                 
+                 >
+                    <FaArrowRight />
+                </motion.div>
             </motion.div>
             
 
@@ -65,6 +80,8 @@ const CategoriesCard = ({ category }) => {
                  <div className="absolute bottom-10 left-30 -top-6 bg-green-600 w-12 h-12 flex justify-center items-center rounded-tr-xl z-10">
                     {icon}
                 </div>
+               
+                
                 <h3 className="text-lg font-semibold mb-2">{title}</h3>
                 <p className="text-gray-600 text-sm">
                     Posted Jobs:{" "}
@@ -75,6 +92,6 @@ const CategoriesCard = ({ category }) => {
             </motion.div>
         </motion.div>
     );
-};
+});
 
 export default CategoriesCard;

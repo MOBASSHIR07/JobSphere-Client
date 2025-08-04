@@ -1,6 +1,7 @@
-import React, { use } from 'react';
+import React, { Suspense, use } from 'react';
 import { useEffect, useState } from 'react';
-import CategoriesCard from './CategoriesCard';
+
+const CategoriesCard = React.lazy(() => import('./CategoriesCard')); // Lazy load CategoriesCard
 
 const Categories = () => {
     const [categories, setCategories] = useState([]);
@@ -30,7 +31,9 @@ const Categories = () => {
             </div>
             <div className='max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4'>
                 {categories.map((category, index) => (
-                    <CategoriesCard key={index} category={category} />  
+                  <Suspense fallback={<div className="loading">Loading...</div>}>
+                  <CategoriesCard key={index} category={category} />  
+                  </Suspense>
                 ))}
             
             </div>

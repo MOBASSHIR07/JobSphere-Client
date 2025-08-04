@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { FiSearch } from 'react-icons/fi';
-import Candidate from '../../assets/Image/Candidate.png';
 import { motion, AnimatePresence } from "framer-motion";
-import Jobcircular from '../../assets/Image/Screenshot 2025-08-01 023315.png';
-import AnImg from '../../assets/Image/AnImg.png';
-import banner1 from '../../assets/Image/banner1.jpg';
-import banner2 from '../../assets/Image/banner2.jpg';
+import banner1 from '../../assets/Image/banner1.jpg'
+import banner2 from '../../assets/Image/banner2.avif'
+
 
 const Banner = () => {
   const texts = ["Best Carrier", "Best Solution"];

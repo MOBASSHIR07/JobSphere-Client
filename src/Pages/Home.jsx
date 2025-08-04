@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import Banner from './components/Banner';
-import JobHeroSection from './components/JobHeroSection';
-import Categories from './components/Categories';
+
+const JobHeroSection = lazy(()=> import('./components/JobHeroSection'));
+
+const Categories = lazy(() => import('./components/Categories'));
 
 const Home = () => {
-    return (
-        <>
-        <div className=''>
-          <Banner></Banner>
-        </div>
-        <div>
-            <JobHeroSection></JobHeroSection>
-        </div>
-        <div>
-            <Categories></Categories>
-        </div>
-        </>
-    );
+  return (
+    <>
+      <div>
+        <Banner />
+      </div>
+      <div>
+        <Suspense fallback={<div>Loading job hero section...</div>}>
+        <JobHeroSection />
+        </Suspense>
+      </div>
+      <div>
+        <Suspense fallback={<div>Loading categories...</div>}>
+          <Categories />
+        </Suspense>
+      </div>
+    </>
+  );
 };
 
 export default Home;

@@ -61,14 +61,14 @@ const Footer = () => {
               </div>
             </div>
             <div className="text-center">
-              <div className="text-white font-bold text-xl"><CountUp start='0' end='250' duration='3' enableScrollSpy / ></div>
+              <div className="text-white font-bold text-xl"><CountUp start='0' end='250' duration='3' enableScrollSpy   scrollSpyOnce / ></div>
               <div className="flex justify-center items-center gap-2 mt-1 text-gray-400">
                 <FaBriefcase className="text-green-500" />
                 <span className="text-sm">Job Listings</span>
               </div>
             </div>
             <div className="text-center">
-              <div className="text-white font-bold text-xl"><CountUp start='0' end='370' duration='3' enableScrollSpy / ></div>
+              <div className="text-white font-bold text-xl"><CountUp start='0' end='370' duration='3' enableScrollSpy   scrollSpyOnce / ></div>
               <div className="flex justify-center items-center gap-2 mt-1 text-gray-400">
                 <FaFileAlt className="text-green-500" />
                 <span className="text-sm">Resumes Posted</span>
