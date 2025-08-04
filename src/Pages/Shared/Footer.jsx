@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { animate, motion, useMotionValue, useTransform } from "motion/react";
+import React from 'react';
 import {
   FaFacebookF,
   FaPinterestP,
@@ -18,55 +17,14 @@ import {
   FaFileAlt
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import footerImg from '../../assets/Image/footerImg.png'
+import footerImg from '../../assets/Image/footerImg.png';
 import { useLocation } from 'react-router-dom';
-
-// === Animated Counter Component ===
-const AnimatedStat = ({ value, label, icon: Icon }) => {
-  const ref = useRef(null);
-  const [inView, setInView] = useState(false);
-  const count = useMotionValue(0);
-  const rounded = useTransform(() => Math.round(count.get()));
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !inView) {
-          setInView(true);
-        }
-      },
-      { threshold: 0.5 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [inView]);
-
-  useEffect(() => {
-    if (inView) {
-      animate(count, value, { duration: 2 });
-    }
-  }, [inView, value]);
-
-  return (
-    <div ref={ref} className="text-center">
-      <motion.div
-        style={{ fontSize: "1.5rem", fontWeight: "bold", color: "white" }}
-        animate={inView ? { scale: [1, 1.2, 1] } : { scale: 1 }}
-        transition={{ duration: 1 }}
-      >
-        {rounded}
-      </motion.div>
-      <div className="flex justify-center items-center gap-2 mt-1 text-gray-400">
-        <Icon className="text-green-500" />
-        <span className="text-sm">{label}</span>
-      </div>
-    </div>
-  );
-};
+import CountUp from 'react-countup';
 
 // === Footer ===
 const Footer = () => {
-    const location = useLocation();
+  const location = useLocation();
+
   return (
     <>
       {location.pathname === '/' && (
@@ -90,11 +48,32 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Animated Stats */}
+          {/* Placeholder for Stats / CountUp */}
           <div className="flex justify-center md:justify-end space-x-10 text-sm text-gray-400 mt-6 md:mt-0">
-            <AnimatedStat value={145} label="Happy Clients" icon={FaSmile} />
-            <AnimatedStat value={215} label="Job Listings" icon={FaBriefcase} />
-            <AnimatedStat value={745} label="Resumes Posted" icon={FaFileAlt} />
+            {/* Replace these blocks with <CountUp /> later */}
+            <div className="text-center">
+             <div className="text-white font-bold text-xl"> <CountUp start='0' end='145' duration='3' enableScrollSpy  // scrollSpyDelay={200}
+            scrollSpyOnce 
+             / ></div>
+              <div className="flex justify-center items-center gap-2 mt-1 text-gray-400">
+                <FaSmile className="text-green-500" />
+                <span className="text-sm">Happy Clients</span>
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-white font-bold text-xl"><CountUp start='0' end='250' duration='3' enableScrollSpy / ></div>
+              <div className="flex justify-center items-center gap-2 mt-1 text-gray-400">
+                <FaBriefcase className="text-green-500" />
+                <span className="text-sm">Job Listings</span>
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-white font-bold text-xl"><CountUp start='0' end='370' duration='3' enableScrollSpy / ></div>
+              <div className="flex justify-center items-center gap-2 mt-1 text-gray-400">
+                <FaFileAlt className="text-green-500" />
+                <span className="text-sm">Resumes Posted</span>
+              </div>
+            </div>
           </div>
         </div>
 

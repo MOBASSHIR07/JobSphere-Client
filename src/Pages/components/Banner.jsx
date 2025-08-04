@@ -30,7 +30,7 @@ const Banner = () => {
               <motion.span
                 key={texts[index]}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0, color: '#2CDB30', opacity: 0.8 }}
+                animate={{ opacity: 1, y: 0, color: '#2CDB30' }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 1, ease: "easeInOut" }}
                 className="text-gray-900 inline-block"
