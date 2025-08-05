@@ -6,6 +6,7 @@ import ManiLayout from "../Layout/ManiLayout";
 import Home from "../Pages/Home";
 import Register from "../Pages/Register";
 import SignIn from "../Pages/SignIn";
+import Jobs from "../Pages/components/Jobs";
 
 
 const router = createBrowserRouter([
@@ -16,7 +17,12 @@ const router = createBrowserRouter([
     children:[
         {
             path:'/',
-            element:<Home></Home>
+            element:<Home></Home>,
+            children:[
+                {index:true,
+                element:<Jobs></Jobs>
+                }
+            ]
         },
         {
             path:'/register',
