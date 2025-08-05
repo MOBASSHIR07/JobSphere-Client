@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import {
   FaFacebookF,
   FaPinterestP,
@@ -20,15 +21,36 @@ import { Link } from 'react-router-dom';
 import footerImg from '../../assets/Image/footerImg.png';
 import { useLocation } from 'react-router-dom';
 import CountUp from 'react-countup';
+import { div } from 'motion/react-client';
 
 // === Footer ===
 const Footer = () => {
   const location = useLocation();
+  const [mounted, setMounted] = React.useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <>
       {location.pathname === '/' && (
-        <img src={footerImg} alt="Home Banner" />
+        <div className=' mx-16 shadow-[0_4px_12px_rgba(0,0,0,0.1)] ... rounded-md bg-white mb-20'>
+          <div className='flex justify-between items-center bg-white  border-gray-300  '>
+            <div className='flex justify-center items-center gap-4 w-1/3 bg-green-500 '>
+        
+                   <h3 className='text-5xl text-white font-bold p-10'>Post Job Now</h3>
+            </div>
+            <div className=' flex w-2/3 -mx-3  justify-center items-center gap-10'>
+               <p className='text-2xl text-gray-400 mx-10'>Start your free trial today, no credit card is required.</p>
+            <div>
+              <button className='bg-green-500  text-3xl text-white font-semibold p-4'>Post Job</button>
+            </div>
+            </div>
+
+          </div>
+            
+
+        </div>
       )}
       <footer className="bg-gray-900 text-gray-300 pt-10">
         {/* Newsletter + Stats */}
@@ -52,23 +74,66 @@ const Footer = () => {
           <div className="flex justify-center md:justify-end space-x-10 text-sm text-gray-400 mt-6 md:mt-0">
             {/* Replace these blocks with <CountUp /> later */}
             <div className="text-center">
-             <div className="text-white font-bold text-xl"> <CountUp start='0' end='145' duration='3' enableScrollSpy  // scrollSpyDelay={200}
-            scrollSpyOnce 
-             / ></div>
+              <div className="text-white font-bold text-xl">
+                {mounted && (
+                  <CountUp
+                    start={0}
+                    end={145}
+                    duration={3}
+                    enableScrollSpy
+                    scrollSpyOnce
+                    scrollSpyDelay={200}
+                  >
+                    {({ countUpRef }) => (
+                      <span ref={countUpRef} />
+                    )}
+                  </CountUp>
+                )}
+              </div>
               <div className="flex justify-center items-center gap-2 mt-1 text-gray-400">
                 <FaSmile className="text-green-500" />
                 <span className="text-sm">Happy Clients</span>
               </div>
             </div>
             <div className="text-center">
-              <div className="text-white font-bold text-xl"><CountUp start='0' end='250' duration='3' enableScrollSpy   scrollSpyOnce / ></div>
+              <div className="text-white font-bold text-xl">
+                {mounted && (
+                  <CountUp
+                    start={0}
+                    end={545}
+                    duration={3}
+                    enableScrollSpy
+                    scrollSpyOnce
+                    scrollSpyDelay={200}
+                  >
+                    {({ countUpRef }) => (
+                      <span ref={countUpRef} />
+                    )}
+                  </CountUp>
+                )}
+              </div>
               <div className="flex justify-center items-center gap-2 mt-1 text-gray-400">
                 <FaBriefcase className="text-green-500" />
                 <span className="text-sm">Job Listings</span>
               </div>
             </div>
             <div className="text-center">
-              <div className="text-white font-bold text-xl"><CountUp start='0' end='370' duration='3' enableScrollSpy   scrollSpyOnce / ></div>
+              <div className="text-white font-bold text-xl">
+                {mounted && (
+                  <CountUp
+                    start={0}
+                    end={745}
+                    duration={3}
+                    enableScrollSpy
+                    scrollSpyOnce
+                    scrollSpyDelay={200}
+                  >
+                    {({ countUpRef }) => (
+                      <span ref={countUpRef} />
+                    )}
+                  </CountUp>
+                )}
+              </div>
               <div className="flex justify-center items-center gap-2 mt-1 text-gray-400">
                 <FaFileAlt className="text-green-500" />
                 <span className="text-sm">Resumes Posted</span>

@@ -16,9 +16,9 @@ const JobCard = ({ job }) => {
     return (
         <div className="border border-gray-300 rounded-md bg-white  ">
             {/* Top Section */}
-            <div className="flex  justify-between items-center  p-6 border-b  border-gray-300">
+            <div className="flex  justify-between items-center   border-b  border-gray-300">
                 {/* Left: Logo and Info */}
-                <div className='border-r px-12 border-gray-300 '>
+                <div className='border-r px-20 border-gray-300 p-10 '>
                     <div className="flex items-center gap-4 border-gray-300 ">
                         {/* Logo */}
                         <div className="w-[72px] h-[72px] border border-gray-200 flex items-center justify-center overflow-hidden">
@@ -32,7 +32,7 @@ const JobCard = ({ job }) => {
 
                         {/* Title and Company */}
                         <div>
-                            <h3 className="text-xl font-semibold">{title}</h3>
+                            <h3 className="text-lg font-bold">{title}</h3>
                             <p className="text-gray-600">{company}</p>
 
                             {/* Category tag */}
@@ -48,7 +48,7 @@ const JobCard = ({ job }) => {
 
                 </div>
                 {/* Right: Apply Button */}
-                <div className=' border p-12'>
+                <div className='  p-12'>
                     <NavLink
                         to="/apply"
                         className="border border-gray-300 px-5 py-2 rounded hover:bg-green-500 transition"

@@ -1,10 +1,12 @@
 import React, { Suspense, useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const JobCard = React.lazy(() => import('./JobCard'));
 
 const Jobs = () => {
     const [jobs, setJobs] = useState([]);
     const [type, setType] = useState([]);
+    const [activeType, setActiveType] = useState('All');
 
     useEffect(() => {
         fetch('http://localhost:3000/getjobs')
@@ -18,6 +20,25 @@ const Jobs = () => {
             });
     }, []);
 
+    const handleTypeFilter = (jobType) => {
+        fetch(`http://localhost:3000/getjobs/${encodeURIComponent(jobType)}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                setJobs(data);
+                setActiveType(jobType);
+
+            });
+    };
+    const handleAllJobs = () => {
+        fetch('http://localhost:3000/getjobs')
+            .then(response => response.json())
+            .then(data => {
+                setJobs(data);
+                setActiveType('All');
+            });
+    }
+
     return (
         <div className="min-h-screen mx-auto py-12">
             <div className='text-center mb-12'>
@@ -27,9 +48,17 @@ const Jobs = () => {
 
             {/* Job Type Filter Buttons */}
             <div className="flex flex-wrap justify-center gap-4 mb-8">
-                <button className="px-4 py-2 bg-green-600 text-white rounded">All</button>
+
+
+
+                <button onClick={handleAllJobs} className={`px-4 py-2 border rounded  ${activeType === "All" ? "bg-green-600 text-white" : ""
+                    }`}>All</button>
+
+
+
                 {type.map((t, i) => (
-                    <button key={i} className="px-4 py-2 border rounded hover:bg-gray-100">
+                    <button onClick={() => handleTypeFilter(t)} key={i} className={`px-4 py-2 border rounded ${activeType === t ? "bg-green-600 text-white" : ""
+                        }`}>
                         {t}
                     </button>
                 ))}
