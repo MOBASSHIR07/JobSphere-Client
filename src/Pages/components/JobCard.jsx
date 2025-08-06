@@ -4,6 +4,7 @@ import { FaMapMarkerAlt, FaMoneyBillWave, FaClock } from 'react-icons/fa';
 
 const JobCard = ({ job }) => {
     const {
+        _id,
         title,
         company,
         company_logo,
@@ -50,7 +51,7 @@ const JobCard = ({ job }) => {
                 {/* Right: Apply Button */}
                 <div className='  p-12'>
                     <NavLink
-                        to="/apply"
+                        to={`/getjob/${_id}`}
                         className="border border-gray-300 px-5 py-2 rounded hover:bg-green-500 transition"
                     >
                         Apply

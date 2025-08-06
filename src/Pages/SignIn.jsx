@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { FiEye, FiEyeOff, FiArrowRight } from 'react-icons/fi';
 import Lottie from 'lottie-react';
 import { motion } from 'framer-motion';
@@ -10,15 +10,18 @@ const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+   
   const { logIn, sigInWithGoogle } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const form = location.state?.from?.pathname || '/';
 
   const handleGoogleSignIn = (e)=>{
      e.preventDefault();
         sigInWithGoogle()
         .then(result=>{
           console.log()
-          navigate('/');
+          navigate(form);
         })
         .catch(error=>{
           console.log();
@@ -51,7 +54,7 @@ const SignIn = () => {
 
     try {
       await logIn(email, password);
-      navigate('/');
+      navigate(form);
     } catch (error) {
       setErrorMsg(error.message || 'Login failed. Please try again.');
       setIsLoading(false);
