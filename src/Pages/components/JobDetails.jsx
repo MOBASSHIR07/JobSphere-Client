@@ -9,10 +9,12 @@ import {
     FaCalendarAlt,
     FaBuilding
 } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const JobDetails = () => {
     const job = useLoaderData();
     const {
+        _id,
         title,
         location,
         jobType,
@@ -90,19 +92,41 @@ const JobDetails = () => {
 
                     {/* Buttons */}
                     <div className="mt-6 space-y-3">
-                        <a
-                            href={`mailto:${hr_email}`}
+                       <Link to={`/apply/${_id}`} state={{title, company}}>
+                       
+                        <button
+                            
                             className="block w-full text-center bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-full transition"
                         >
                             Apply Now →
-                        </a>
+                        </button>
+                       </Link>
                         <button className="w-full flex justify-center items-center gap-2 bg-gray-100 text-gray-700 border border-gray-300 py-2 rounded-full hover:bg-gray-200 transition">
                             <FaBookmark />
                             Add Bookmark
                         </button>
+
+                        <a
+                            href={`mailto:${hr_email}`}
+                            className="block text-center w-full  bg-blue-600 hover:bg-green-700 text-white font-semibold py-2 rounded-full transition"
+                        >
+                            Easy Apply
+                            <span className="inline-block ml-2 align-middle animate-pulse ">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 256 193">
+                                    <path fill="#4285F4" d="M58.182 192.05V93.14L27.507 65.077 0 49.504v125.091c0 9.658 7.825 17.455 17.455 17.455h40.727Z" />
+                                    <path fill="#34A853" d="M197.818 192.05h40.727c9.659 0 17.455-7.826 17.455-17.455V49.505l-31.156 17.837-27.026 25.798v99.91Z" />
+                                    <path fill="#EA4335" d="m58.182 93.14-4.174-38.647 4.174-36.989L128 69.868l69.818-52.364 4.669 34.992-4.669 40.644L128 145.504z" />
+                                    <path fill="#FBBC04" d="M197.818 17.504V93.14L256 49.504V26.231c0-21.585-24.64-33.89-41.89-20.945l-16.292 12.218Z" />
+                                </svg>
+                            </span>
+                        </a>
+
+
                     </div>
+                     
                 </div>
             </div>
+            
 
             {/* Bottom Section */}
             <div className="space-y-4 my-12">
