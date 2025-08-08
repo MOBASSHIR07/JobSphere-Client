@@ -136,7 +136,7 @@ const JobDetails = () => {
                         Job Description
                     </div>
                     <div className="collapse-content">
-                        <p>Create engaging user interfaces and improve user experience for our applications.</p>
+                        <p>{description}</p>
                     </div>
                 </div>
 
@@ -147,10 +147,11 @@ const JobDetails = () => {
                     </div>
                     <div className="collapse-content">
                         <ul className="list-disc ml-5">
-                            <li>Figma</li>
-                            <li>Adobe XD</li>
-                            <li>HTML</li>
-                            <li>CSS</li>
+                           {
+                            requirements.map((req, index) => (
+                                <li key={index}>{req}</li>      
+                            ))
+                           }
                         </ul>
                     </div>
                 </div>
@@ -162,9 +163,11 @@ const JobDetails = () => {
                     </div>
                     <div className="collapse-content">
                         <ul className="list-disc ml-5">
-                            <li>Design prototypes</li>
-                            <li>Conduct user research</li>
-                            <li>Collaborate with developers</li>
+                           {
+                            responsibilities.map((res, index) => (
+                                <li key={index}>{res}</li>      
+                            ))  
+                           }
                         </ul>
                     </div>
                 </div>

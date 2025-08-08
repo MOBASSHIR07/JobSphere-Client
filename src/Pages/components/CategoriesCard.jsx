@@ -20,18 +20,17 @@ const CategoriesCard = memo(({category}) => {
 
     return (
         <motion.div
-            className=" w-72  rounded-xl transition-all duration-300 will-change-transform will-change-opacity "
+            className="w-72 rounded-xl"
             whileHover="hover"
             initial="rest"
+            transition={{ duration: 0.3, ease: "easeInOut" }}
         >
             {/* Image Section with Gradient Overlay */}
             <motion.div
-             
-                className="relative h-60 "
+                className="relative h-60"
                 variants={{
                     rest: { x: 0 },
-                    hover: { x: -20 },
-                    transition: { duration: 0.1, ease: "easeInOut" }
+                    hover: { x: -20 }
                 }}
             >
                 <img
@@ -42,45 +41,36 @@ const CategoriesCard = memo(({category}) => {
                 />
                 {/* Gradient Overlay (visible on hover) */}
                 <motion.div
-                
                     className="absolute inset-0 bg-gradient-to-t from-yellow-600/80 to-transparent"
                     variants={{
                         rest: { opacity: 0 },
-                        hover: { opacity: 1 },
-                          transition: { duration: 0.1, ease: "easeInOut" }
+                        hover: { opacity: 1 }
                     }}
-                    // transition={{
-                    //     duration: 0.5,
-                    //     ease: "easeInOut"
-                    // }}
+                    transition={{ duration: 0.3 }}
                 />
-                {/* <div className="absolute -bottom-10 -left-30 bg-green-600 w-12 h-12 flex justify-center items-center rounded-tr-xl z-10">
-                    {icon}
-                </div> */}
-
-                  <motion.div
-                 
-                 className="absolute  left-[40%] top-[40%]  text-green-500 text-5xl flex justify-center items-center rounded-tr-xl z-10"
-                  variants={{rest: { opacity: 0 }, hover: { opacity: 1 }}}
-                 
-                 >
+                <motion.div
+                    className="absolute left-[40%] top-[40%] text-green-500 text-5xl flex justify-center items-center rounded-tr-xl z-10"
+                    variants={{
+                        rest: { opacity: 0 },
+                        hover: { opacity: 1 }
+                    }}
+                    transition={{ delay: 0.1, duration: 0.3 }}
+                >
                     <FaArrowRight />
                 </motion.div>
             </motion.div>
             
-
             {/* Content Section */}
             <motion.div
-                className=" relative p-6 min-h-[140px] bg-white"
+                className="relative p-6 min-h-[140px] bg-white"
                 variants={{
                     rest: { x: 0 },
                     hover: { x: 20 }
                 }}
             >
-                 <div className="absolute bottom-10 left-30 -top-6 bg-green-600 w-12 h-12 flex justify-center items-center rounded-tr-xl z-10">
+                <div className="absolute bottom-10 left-30 -top-6 bg-green-600 w-12 h-12 flex justify-center items-center rounded-tr-xl z-10">
                     {icon}
                 </div>
-               
                 
                 <h3 className="text-lg font-semibold mb-2">{title}</h3>
                 <p className="text-gray-600 text-sm">
