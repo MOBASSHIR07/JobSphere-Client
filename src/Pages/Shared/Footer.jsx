@@ -34,24 +34,25 @@ const Footer = () => {
   return (
     <>
       {location.pathname === '/' && (
-        <div className=' mx-16 shadow-[0_4px_12px_rgba(0,0,0,0.1)] ... rounded-md bg-white mb-20'>
-          <div className='flex justify-between items-center bg-white  border-gray-300  '>
-            <div className='flex justify-center items-center gap-4 w-1/3 bg-green-500 '>
-        
-                   <h3 className='text-5xl text-white font-bold p-10'>Post Job Now</h3>
-            </div>
-            <div className=' flex w-2/3 -mx-3  justify-center items-center gap-10'>
-               <p className='text-2xl text-gray-400 mx-10'>Start your free trial today, no credit card is required.</p>
-            <div>
-              <button className='bg-green-500  text-3xl text-white font-semibold p-4'>Post Job</button>
-            </div>
-            </div>
+  <div className='mx-4 md:mx-16 shadow-[0_4px_12px_rgba(0,0,0,0.1)] rounded-md bg-white mb-10 md:mb-20'>
+    <div className='flex flex-col md:flex-row justify-between items-center bg-white border-gray-300'>
+      {/* Left Section (Green Background) */}
+      <div className='w-full md:w-1/3 bg-green-500 text-center p-6 md:p-10'>
+        <h3 className='text-3xl md:text-5xl text-white font-bold'>Post Job Now</h3>
+      </div>
 
-          </div>
-            
-
-        </div>
-      )}
+      {/* Right Section (Content + Button) */}
+      <div className='w-full md:w-2/3 flex flex-col md:flex-row items-center justify-center gap-4 p-6 md:p-0'>
+        <p className='text-lg md:text-2xl text-gray-400 text-center md:mx-10'>
+          Start your free trial today, no credit card is required.
+        </p>
+        <button className='bg-green-500 text-xl md:text-3xl text-white font-semibold px-6 py-3 md:p-4 whitespace-nowrap'>
+          Post Job
+        </button>
+      </div>
+    </div>
+  </div>
+)}
       <footer className="bg-gray-900 text-gray-300 pt-10">
         {/* Newsletter + Stats */}
         <div className="max-w-7xl mx-auto px-4 md:flex md:justify-between md:items-center pb-10 border-b border-gray-700">

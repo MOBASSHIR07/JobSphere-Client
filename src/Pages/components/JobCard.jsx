@@ -15,26 +15,25 @@ const JobCard = ({ job }) => {
     } = job;
 
     return (
-        <div className="border border-gray-300 rounded-md bg-white  ">
-            {/* Top Section */}
-            <div className="flex  justify-between items-center   border-b  border-gray-300">
+        <div className="border border-gray-300 rounded-md bg-white overflow-hidden"> {/* Added overflow-hidden */}
+            {/* Top Section - Made responsive */}
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-300 p-4 sm:p-0">
                 {/* Left: Logo and Info */}
-                <div className='border-r px-20 border-gray-300 p-10 '>
-                    <div className="flex items-center gap-4 border-gray-300 ">
+                <div className='w-full sm:w-auto sm:border-r border-gray-300 sm:px-6 p-4 sm:p-6 flex-1'>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                         {/* Logo */}
-                        <div className="w-[72px] h-[72px] border border-gray-200 flex items-center justify-center overflow-hidden">
+                        <div className="w-16 h-16 sm:w-[72px] sm:h-[72px] border border-gray-200 flex items-center justify-center overflow-hidden">
                             <img
                                 src={company_logo}
                                 alt={company}
-                                className="object-contain w-14 h-14 rounded-full"
+                                className="object-contain w-12 h-12 sm:w-14 sm:h-14 rounded-full"
                             />
                         </div>
 
-
                         {/* Title and Company */}
-                        <div>
-                            <h3 className="text-lg font-bold">{title}</h3>
-                            <p className="text-gray-600">{company}</p>
+                        <div className="flex-1 min-w-0"> {/* Prevents text overflow */}
+                            <h3 className="text-lg font-bold truncate">{title}</h3>
+                            <p className="text-gray-600 truncate">{company}</p>
 
                             {/* Category tag */}
                             {category && (
@@ -46,38 +45,38 @@ const JobCard = ({ job }) => {
                             )}
                         </div>
                     </div>
-
                 </div>
-                {/* Right: Apply Button */}
-                <div className='  p-12'>
+
+                {/* Right: Apply Button - Now properly aligned */}
+                <div className='w-full sm:w-auto p-4 sm:p-6 self-center sm:self-auto'>
                     <NavLink
                         to={`/getjob/${_id}`}
-                        className="border border-gray-300 px-5 py-2 rounded hover:bg-green-500 transition"
+                        className="block w-full sm:w-auto text-center border border-gray-300 px-5 py-2 rounded hover:bg-green-500 transition whitespace-nowrap"
                     >
                         Apply
                     </NavLink>
                 </div>
             </div>
 
-            {/* Bottom Section */}
-            <div className="flex flex-wrap gap-6 items-center text-gray-500 text-sm px-4 py-3">
+            {/* Bottom Section - Improved spacing */}
+            <div className="flex flex-wrap justify-center sm:justify-start items-center gap-3 sm:gap-4 text-gray-500 text-sm px-4 py-3">
                 {/* Location */}
                 <div className="flex items-center gap-2">
                     <FaMapMarkerAlt />
-                    <span>{location}</span>
+                    <span className="truncate max-w-[120px] sm:max-w-none">{location}</span>
                 </div>
 
-                <span className="text-xl font-light">•</span>
+                <span className="hidden sm:inline text-xl font-light">•</span>
 
                 {/* Salary */}
                 <div className="flex items-center gap-2">
                     <FaMoneyBillWave />
-                    <span>
+                    <span className="truncate">
                         {salaryRange.currency} {salaryRange.min.toLocaleString()} - {salaryRange.max.toLocaleString()}
                     </span>
                 </div>
 
-                <span className="text-xl font-light">•</span>
+                <span className="hidden sm:inline text-xl font-light">•</span>
 
                 {/* Job Type */}
                 <div className="flex items-center gap-2">

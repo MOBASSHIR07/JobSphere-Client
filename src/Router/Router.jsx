@@ -13,6 +13,8 @@ import ApplyJob from "../Pages/components/ApplyJob";
 import MyApplications from "../Pages/components/MyApplications";
 import Addjob from "../Pages/Recruiters/Addjob";
 import Test from "../Pages/Recruiters/Test";
+import MyPostedJob from "../Pages/Recruiters/MyPostedJob";
+import ShowApplicants from "../Pages/Recruiters/ShowApplicants";
 
 
 const router = createBrowserRouter([
@@ -58,8 +60,17 @@ const router = createBrowserRouter([
 
         },
         {
-          path:'addjob',
+          path:'/addjob',
           element:<PrivateRoute><Addjob></Addjob></PrivateRoute> ,
+        },
+        {
+          path:'/mypostedjob',
+          element:<PrivateRoute><MyPostedJob></MyPostedJob></PrivateRoute> ,
+        },
+        {
+          path:'/showApplicants/:jobid',
+          element:<PrivateRoute><ShowApplicants></ShowApplicants></PrivateRoute> ,
+          loader: ({params}) => fetch(`http://localhost:3000/get-applicants/${params.jobid}`)
         },
         {
             path:'/register',

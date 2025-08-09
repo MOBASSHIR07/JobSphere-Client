@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Box, TextField, MenuItem, Button } from '@mui/material';
 import toast from 'react-hot-toast';
+import AuthContext from '../../Context/AuthContext';
 
 const AddJobForm = () => {
+    const {user} = useContext(AuthContext);
 
     const handleAddjob = e =>{
         e.preventDefault();
@@ -129,7 +131,7 @@ const AddJobForm = () => {
                     </TextField>
 
                     {/* HR Email */}
-                    <TextField fullWidth label="HR Email" name="hr_email" variant="outlined" type="email" defaultValue="" />
+                    <TextField fullWidth label="HR Email" name="hr_email" variant="outlined" type="email" defaultValue={user.email} />
 
                     {/* HR Name */}
                     <TextField fullWidth label="HR Name" name="hr_name" variant="outlined" defaultValue="" />

@@ -55,6 +55,11 @@ const Navbar = () => {
           Add Job
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/mypostedjob" className={({ isActive }) => isActive ? activeClass : navItemClass}>
+          My Posted Jobs
+        </NavLink>
+      </li>
     </>
   );
 

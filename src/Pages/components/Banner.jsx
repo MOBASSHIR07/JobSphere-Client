@@ -74,8 +74,7 @@ const Banner = () => {
         </div>
 
         {/* ✅ Right: Image with Animation (1/3) */}
-
-        <div className="w-1/3 flex flex-col justify-center gap-[-20px]">
+        <div className="w-full overflow-hidden sm:overflow-visible lg:w-1/3 ...">
           {/* Y-axis animation */}
           <motion.div
             animate={{ y: [100, 50, 100] }}
