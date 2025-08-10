@@ -5,6 +5,7 @@ import Lottie from 'lottie-react';
 import { motion } from 'framer-motion';
 import loginAnimation from '../assets/Lottie/Login.json';
 import AuthContext from '../Context/AuthContext';
+import axios from 'axios';
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -54,7 +55,11 @@ const SignIn = () => {
 
     try {
       await logIn(email, password);
+      const user = {email:email}
+    const data = await axios.post('http://localhost:3000/jwt', user )
+     console.log(data);
       navigate(form);
+      
     } catch (error) {
       setErrorMsg(error.message || 'Login failed. Please try again.');
       setIsLoading(false);
