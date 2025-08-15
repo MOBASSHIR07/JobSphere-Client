@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../Context/AuthContext';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import axios from 'axios';
 
 const MyApplications = () => {
     const { user } = useContext(AuthContext);
@@ -10,10 +11,13 @@ const MyApplications = () => {
     useEffect(() => {
         if (!user?.email) return;
 
-        fetch(`http://localhost:3000/post-job-applications?email=${user.email}`)
-            .then(response => response.json())
-            .then(data => setApplications(data))
-            .catch(error => console.error('Error fetching applications:', error));
+        // fetch(`http://localhost:3000/post-job-applications?email=${user.email}`)
+        //     .then(response => response.json())
+        //     .then(data => setApplications(data))
+        //     .catch(error => console.error('Error fetching applications:', error));
+        axios.get(`http://localhost:3000/post-job-applications?email=${user.email}`,{withCredentials:true}) //for sending cookie , usecredentials 
+        .then(res=>setApplications(res.data))
+
 
         return () => setApplications([]);
     }, [user]);
@@ -50,7 +54,7 @@ const MyApplications = () => {
                         <th>Job Info</th>
                         <th>Company</th>
                         <th>Job Type</th>
-                        <th>Applied</th> {/* New column */}
+                        <th>Applied</th> 
                         <th>Actions</th>
                     </tr>
                 </thead>
