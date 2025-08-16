@@ -3,21 +3,20 @@ import AuthContext from '../../Context/AuthContext';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
+import UseAxios from '../../Hooks/UseAxios';
 
 const MyApplications = () => {
     const { user } = useContext(AuthContext);
     const [applications, setApplications] = useState([]);
-
+    const axiosSecure = UseAxios();
     useEffect(() => {
         if (!user?.email) return;
 
-        // fetch(`http://localhost:3000/post-job-applications?email=${user.email}`)
-        //     .then(response => response.json())
-        //     .then(data => setApplications(data))
-        //     .catch(error => console.error('Error fetching applications:', error));
-        axios.get(`http://localhost:3000/post-job-applications?email=${user.email}`,{withCredentials:true}) //for sending cookie , usecredentials 
-        .then(res=>setApplications(res.data))
+        // axios.get(`http://localhost:3000/post-job-applications?email=${user.email}`, { withCredentials: true }) //for sending cookie , usecredentials 
+        //     .then(res => setApplications(res.data))
 
+          axiosSecure.get(`post-job-applications?email=${user.email}`)
+          .then(res=>setApplications(res.data))
 
         return () => setApplications([]);
     }, [user]);
@@ -54,7 +53,7 @@ const MyApplications = () => {
                         <th>Job Info</th>
                         <th>Company</th>
                         <th>Job Type</th>
-                        <th>Applied</th> 
+                        <th>Applied</th>
                         <th>Actions</th>
                     </tr>
                 </thead>

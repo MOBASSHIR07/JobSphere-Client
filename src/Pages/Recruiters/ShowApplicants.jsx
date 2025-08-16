@@ -4,30 +4,41 @@ import { FiUser, FiPhone, FiCalendar } from 'react-icons/fi';
 import { FaLinkedin, FaGithub, FaRegEnvelope, FaGoogleDrive } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
 import toast from 'react-hot-toast';
+import axios from 'axios';
+import UseAxios from '../../Hooks/UseAxios';
 
 const ShowApplicants = () => {
     const applicantsData = useLoaderData();
     const [applicants, setApplicants] = useState(applicantsData);
+    const axiosSecure = UseAxios();
 
     const handleStatus = (applicantId, newStatus) => {
         // empty for now — you will handle API call
-        fetch(`http://localhost:3000/update-applicant-status/${applicantId}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+        // fetch(`http://localhost:3000/update-applicant-status/${applicantId}`, {
+        //     method: 'PATCH',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
 
-            body: JSON.stringify({ status: newStatus }),
-        })
-            .then(response => response.json())
+        //     body: JSON.stringify({ status: newStatus }),
+        // })
+        //     .then(response => response.json())
+        axiosSecure.patch(`update-applicant-status/${applicantId}`,
+            {
+                
+              status: newStatus 
+            }
+        )
+        .then(res=>res.data)
             .then(data => {
                 console.log(data);
-                if (data.modifiedCount > 0) {
+                if (data.modifiedCount > 0 || data.matchedCount > 0) {
                     toast.success('Status updated successfully');
                     setApplicants(applicants.map(applicant =>
                         applicant._id === applicantId ? { ...applicant, status: newStatus } : applicant
                     ));
                 }
+
 
             })
 
@@ -201,7 +212,7 @@ const ShowApplicants = () => {
                                             {new Date(applicant.createdAt).toLocaleDateString()}
                                         </div>
                                         <select
-                                            value={applicant.status || 'Pending'}
+                                            defaultValue={applicant.status || 'Pending'}
                                             onChange={(e) => handleStatus(applicant._id, e.target.value)}
                                             className="border rounded px-2 py-1 text-xs"
                                         >
