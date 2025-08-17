@@ -64,79 +64,45 @@ Express
 
 MongoDB
 
-# Project Structure
-├── .firebase
-    └── hosting.ZGlzdA.cache
-├── .firebaserc
-├── .gitignore
-├── README.md
-├── eslint.config.js
-├── firebase.json
-├── index.html
-├── package-lock.json
-├── package.json
-├── postcss.config.js
-├── public
-    └── vite.svg
-├── src
-    ├── App.css
-    ├── App.jsx
-    ├── Context
-    │   ├── AuthContext.jsx
-    │   └── AuthProvider.jsx
-    ├── Firebase
-    │   └── Firebase.init.js
-    ├── Hooks
-    │   ├── UseAxios.jsx
-    │   └── UseJobs.jsx
-    ├── Layout
-    │   └── ManiLayout.jsx
-    ├── Pages
-    │   ├── Home.jsx
-    │   ├── Recruiters
-    │   │   ├── Addjob.jsx
-    │   │   ├── MyPostedJob.jsx
-    │   │   ├── ShowApplicants.jsx
-    │   │   └── Test.jsx
-    │   ├── Register.jsx
-    │   ├── Shared
-    │   │   ├── Footer.jsx
-    │   │   ├── Navbar.jsx
-    │   │   └── Spinner
-    │   │   │   ├── Spinner.jsx
-    │   │   │   └── spinner.css
-    │   ├── SignIn.jsx
-    │   └── components
-    │   │   ├── ApplyJob.jsx
-    │   │   ├── Banner.jsx
-    │   │   ├── Categories.jsx
-    │   │   ├── CategoriesCard.jsx
-    │   │   ├── JobCard.jsx
-    │   │   ├── JobDetails.jsx
-    │   │   ├── JobHeroSection.jsx
-    │   │   ├── Jobs.jsx
-    │   │   └── MyApplications.jsx
-    ├── Router
-    │   ├── PrivateRoute.jsx
-    │   └── Router.jsx
-    ├── assets
-    │   ├── Image
-    │   │   ├── Candidate.png
-    │   │   ├── JobImage.png
-    │   │   ├── Screenshot 2025-08-01 023315.png
-    │   │   ├── banner1.jpg
-    │   │   ├── banner2.avif
-    │   │   └── footerImg.png
-    │   ├── Lottie
-    │   │   ├── Login.json
-    │   │   └── register.json
-    │   └── react.svg
-    ├── index.css
-    └── main.jsx
-├── tailwind.config.js
-└── vite.config.js
+## Project Structure
 
-
+```bash
+src/
+├── Context/               # Authentication context
+│   ├── AuthContext.jsx
+│   └── AuthProvider.jsx
+├── Hooks/                 # Custom hooks
+│   ├── UseAxios.jsx       # Axios instance with interceptors
+│   └── UseJobs.jsx
+├── Layout/                # Main application layout
+│   └── ManiLayout.jsx
+├── Pages/                 # Page components
+│   ├── Home.jsx           # Home page
+│   ├── Recruiters/        # Recruiter-specific pages
+│   │   ├── Addjob.jsx     # Job posting form
+│   │   ├── MyPostedJob.jsx # Posted jobs list
+│   │   ├── ShowApplicants.jsx # View applicants
+│   │   └── Test.jsx       # Component testing
+│   ├── Shared/            # Shared components
+│   │   ├── Footer.jsx
+│   │   └── Navbar.jsx
+│   ├── components/        # Reusable components
+│   │   ├── ApplyJob.jsx   # Job application form
+│   │   ├── Banner.jsx     # Home page banner
+│   │   ├── Categories.jsx # Job categories
+│   │   ├── CategoriesCard.jsx
+│   │   ├── JobCard.jsx    # Individual job card
+│   │   ├── JobDetails.jsx # Job details page
+│   │   ├── JobHeroSection.jsx
+│   │   ├── Jobs.jsx       # Jobs listing
+│   │   └── MyApplications.jsx # User's applications
+│   ├── Register.jsx       # Registration page
+│   └── SignIn.jsx         # Login page
+├── Router/                # Routing configuration
+│   ├── PrivateRoute.jsx   # Protected routes
+│   └── Router.jsx         # Main router
+└── main.jsx               # Application entry point
+```
 
 # Key Implementation Details
 Authentication Uses Firebase Authentication with email/password and Google providers
