@@ -1,5 +1,6 @@
 # LIVE_DEMO-> https://jobsphere-6fa10.web.app/, https://jobsphere-6fa10.firebaseapp.com/ 
-## Overview JobSphere is a comprehensive job portal application that connects job seekers with recruiters. It provides features for job searching, application management, and job posting for recruiters. Built with React, Firebase Authentication, and a Node.js backend (not included in this repository).
+## Overview
+ JobSphere is a comprehensive job portal application that connects job seekers with recruiters. It provides features for job searching, application management, and job posting for recruiters. Built with React, Firebase Authentication, and a Node.js backend (not included in this repository).
 
 # Features
 Job Seeker Features Browse and search jobs by category, location, or type
