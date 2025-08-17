@@ -2,24 +2,37 @@ import React, { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../Context/AuthContext';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import Spinner from '../Shared/Spinner/Spinner';
+
 
 const MyPostedJob = () => {
     const [postedJobs, setPostedJobs] = useState([]);
+    const [loading, setLoading] = useState(true); // 👈 state for spinner
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        if (!user?.email) return;
+        if (!user?.email) {
+            setLoading(false);
+            return;
+        }
 
-        fetch(`http://localhost:3000/getjobs?email=${user.email}`)
+        setLoading(true); // show spinner before fetching
+        fetch(`https://job-portal-server-ten-beta.vercel.app/getjobs?email=${user.email}`)
             .then(response => response.json())
             .then(data => setPostedJobs(data))
-            .catch(error => console.error('Error fetching jobs:', error));
+            .catch(error => {
+                console.error('Error fetching jobs:', error);
+                toast.error("Failed to load jobs");
+            })
+            .finally(() => setLoading(false)); // hide spinner after fetch
 
         return () => setPostedJobs([]);
     }, [user?.email]);
 
-
-    
+    // 🔹 Show Spinner while fetching
+    if (loading) {
+        return <Spinner></Spinner>
+    }
 
     return (
         <div className="overflow-x-auto p-6">
@@ -62,10 +75,7 @@ const MyPostedJob = () => {
                                 <span className="badge badge-primary badge-outline">{job.jobType}</span>
                             </td>
                             <td>
-                                <p 
-                                    
-                                    className="font-bold text-blue-600 "
-                                >
+                                <p className="font-bold text-blue-600 ">
                                     {job.applicationCount || 0} applicants
                                 </p>
                             </td>
@@ -75,14 +85,12 @@ const MyPostedJob = () => {
                                 </span>
                             </td>
                             <td className="flex flex-wrap gap-2">
-                               
                                 <Link
                                     to={`/showApplicants/${job._id}`}
                                     className="btn btn-sm btn-outline btn-primary"
                                 >
                                     View Applicants
                                 </Link>
-                              
                             </td>
                         </tr>
                     ))}

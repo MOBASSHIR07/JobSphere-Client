@@ -56,7 +56,7 @@ const SignIn = () => {
     try {
       await logIn(email, password);
       const user = {email:email}
-    const data = await axios.post('http://localhost:3000/jwt', user,{withCredentials:true} )
+    const data = await axios.post('https://job-portal-server-ten-beta.vercel.app/jwt', user,{withCredentials:true} )
      console.log(data);
       navigate(form);
       

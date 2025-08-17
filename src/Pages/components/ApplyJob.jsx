@@ -37,7 +37,7 @@ const ApplyForm = () => {
         console.log(applicationData);
 
         try {
-            // const response = await fetch('http://localhost:3000/post-job-application', {
+            // const response = await fetch('https://job-portal-server-ten-beta.vercel.app/post-job-application', {
             //     method: "POST",
             //     headers: {
             //         "Content-Type": "application/json"
@@ -49,7 +49,7 @@ const ApplyForm = () => {
 
 
 
-       const {data} = await axios.post('http://localhost:3000/post-job-application', applicationData, { withCredentials: true })
+       const {data} = await axios.post('https://job-portal-server-ten-beta.vercel.app/post-job-application', applicationData, { withCredentials: true })
             
             // If backend returns success
             if (data?.acknowledged || data?.success) {

@@ -9,7 +9,7 @@ const Categories = () => {
   useEffect(() => {
 
 
-    fetch('http://localhost:3000/getcategories') // Replace with your actual API endpoint
+    fetch('https://job-portal-server-ten-beta.vercel.app/getcategories') // Replace with your actual API endpoint
       .then(response => response.json())  
       .then(data => {
         setCategories(data);

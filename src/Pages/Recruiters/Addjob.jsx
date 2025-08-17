@@ -20,7 +20,7 @@ const AddJobForm = () => {
          newjob.responsibilities= newjob.responsibilities.split(',');
          console.log(newjob);
         // Send the new job data to the server
-        fetch('http://localhost:3000/postjob',{
+        fetch('https://job-portal-server-ten-beta.vercel.app/postjob',{
           method: 'POST',
           headers:{
             'Content-Type':'application/json'

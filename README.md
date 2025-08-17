@@ -1,12 +1,121 @@
-# React + Vite
+#LIVE_DEMO-> https://jobsphere-6fa10.web.app/, https://jobsphere-6fa10.firebaseapp.com/ 
+##Overview JobSphere is a comprehensive job portal application that connects job seekers with recruiters. It provides features for job searching, application management, and job posting for recruiters. Built with React, Firebase Authentication, and a Node.js backend (not included in this repository).
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+****Features Job Seeker Features Browse and search jobs by category, location, or type
 
-Currently, two official plugins are available:
+View detailed job information
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Apply for jobs with resume and profile links
 
-## Expanding the ESLint configuration
+Track application status
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Manage applications (view/delete)
+
+
+
+
+****Recruiter Features Post new job listings with rich details
+
+View and manage posted jobs
+
+See applicants for each job
+
+Update applicant status (Hired/Interview/Pending/Rejected)
+
+
+
+
+***Authentication Email/password registration and login
+
+Google sign-in
+
+Protected routes
+
+JWT-based session management
+
+***Technical Stack Frontend React (Vite)
+
+React Router for navigation
+
+Tailwind CSS with DaisyUI for styling
+
+Firebase Authentication
+
+Axios for API calls
+
+Framer Motion for animations
+
+React Hot Toast for notifications
+
+React Icons and Lucide Icons
+
+
+
+
+
+***Backend Node.js
+
+Express
+
+MongoDB
+
+
+
+***Key Implementation Details Authentication Uses Firebase Authentication with email/password and Google providers
+
+JWT tokens are stored in HTTP-only cookies for security
+
+Context API provides authentication state to the entire app
+
+
+
+
+
+****Data Fetching Custom UseAxios hook creates an Axios instance with:
+
+Base URL configuration
+
+Response interceptors for handling 401/403 errors
+
+Automatic JWT token inclusion in requests
+
+
+
+
+
+
+
+****Performance Optimizations Code splitting with React.lazy and Suspense
+
+Memoization of components with React.memo
+
+Lazy loading of non-critical components
+
+
+
+
+
+
+
+***UI/UX Features Animated transitions with Framer Motion
+
+Responsive design with Tailwind CSS
+
+Loading states and error handling
+
+Form validation with user-friendly feedback
+
+
+
+
+***Future Improvements Implement job search functionality
+
+Add bookmarking/saving jobs feature
+
+Enhance recruiter dashboard with analytics
+
+Add user profile management
+
+Implement real-time notifications
+
+Add resume upload and parsing functionality

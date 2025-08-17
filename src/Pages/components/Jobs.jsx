@@ -9,7 +9,7 @@ const Jobs = () => {
     const [activeType, setActiveType] = useState('All');
 
     useEffect(() => {
-        fetch('http://localhost:3000/getjobs')
+        fetch('https://job-portal-server-ten-beta.vercel.app/getjobs')
             .then(response => response.json())
             .then(data => {
                 setJobs(data);
@@ -21,7 +21,7 @@ const Jobs = () => {
     }, []);
 
     const handleTypeFilter = (jobType) => {
-        fetch(`http://localhost:3000/getjobs/${encodeURIComponent(jobType)}`)
+        fetch(`https://job-portal-server-ten-beta.vercel.app/getjobs/${encodeURIComponent(jobType)}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -31,7 +31,7 @@ const Jobs = () => {
             });
     };
     const handleAllJobs = () => {
-        fetch('http://localhost:3000/getjobs')
+        fetch('https://job-portal-server-ten-beta.vercel.app/getjobs')
             .then(response => response.json())
             .then(data => {
                 setJobs(data);

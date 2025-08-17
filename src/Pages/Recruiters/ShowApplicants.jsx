@@ -14,7 +14,7 @@ const ShowApplicants = () => {
 
     const handleStatus = (applicantId, newStatus) => {
         // empty for now — you will handle API call
-        // fetch(`http://localhost:3000/update-applicant-status/${applicantId}`, {
+        // fetch(`https://job-portal-server-ten-beta.vercel.app/update-applicant-status/${applicantId}`, {
         //     method: 'PATCH',
         //     headers: {
         //         'Content-Type': 'application/json',
