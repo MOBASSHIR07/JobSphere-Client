@@ -46,7 +46,7 @@ Tailwind CSS with DaisyUI for styling
 
 Firebase Authentication
 
-Axios for API calls
+Axios for API calls(Interceptor added)
 
 Framer Motion for animations
 
@@ -60,9 +60,10 @@ React Icons and Lucide Icons
 
 # Backend Node.js
 
-Express
+Express (jwt in cookie)
 
 MongoDB
+# Repo-> https://github.com/MOBASSHIR07/JobSphere_Server
 
 ## Project Structure
 
